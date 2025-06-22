@@ -1,24 +1,35 @@
-//Importa toggle-password
+// Importa o módulo de mostrar/ocultar senha
 import { mostrarSenha } from "../../global/toggle-password/mostrarSenha.js";
 
 mostrarSenha();
 
 const formLogin = document.getElementById('form-login');
 const mensagemLogin = document.getElementById('mensagem-login');
-//Previne que a página recarregue após o envio do formulário
+
+// Previne que a página recarregue após o envio do formulário
 formLogin.addEventListener('submit', function (event) {
     event.preventDefault();
-    //Confere se os campos foram devidamente preenchidos e retorna uma mensagem de texto
+
+    // Captura os valores dos campos
     const email = document.getElementById('form-email').value.trim();
     const senha = document.getElementById('form-senha').value.trim();
+
+    // Verifica se todos os campos foram preenchidos
     if (email === '' || senha === '') {
         mensagemLogin.textContent = 'Preencha todos os campos!';
         mensagemLogin.style.color = 'red';
         return;
     }
-    /*Confirma se os dados inseridos batem com os salvos no localStorage */
-    const usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
 
+    // Recupera os usuários do localStorage
+    let usuarios = [];
+    try {
+        usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
+    } catch (e) {
+        console.error("Erro ao ler localStorage:", e);
+    }
+
+    // Verifica se existe um usuário válido
     const usuarioValido = usuarios.find(user => user.email === email && user.senha === senha);
 
     if (!usuarioValido) {
@@ -27,17 +38,18 @@ formLogin.addEventListener('submit', function (event) {
         return;
     }
 
+    // Login bem-sucedido
     mensagemLogin.textContent = 'Login realizado com sucesso!';
     mensagemLogin.style.color = 'green';
     formLogin.reset();
-    //Redireciona para a pagina de lista de exercícios
+
+    // Redireciona após 2 segundos
     setTimeout(() => {
         window.location.href = 'exerciseList.html';
     }, 2000);
-
-
 });
-//Inicia a página com foco no campo a ser preenchido
+
+// Ao carregar a página, foca no campo de e-mail
 document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("form-email").focus();
 });
