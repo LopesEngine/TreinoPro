@@ -5,10 +5,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login - Treino Pro</title>
+
+    <!-- Estilos CSS -->
     <link rel="stylesheet" href="./src/css/global/reset.css" />
     <link rel="stylesheet" href="./src/css/global/index.css" />
     <link rel="stylesheet" href="./src/css/pages/index.css" />
     <link rel="stylesheet" href="./src/css/pages/login/login.css" />
+
+    <!-- Fontes e Ícones -->
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
@@ -30,8 +34,7 @@
             <div>
                 <label class="input-name" for="senha">Senha:</label>
                 <div class="input-wrapper" id="confirma-senha">
-                    <input class="input-buttom" type="password" id="form-senha" name="senha"
-                        placeholder="Insira sua senha" />
+                    <input class="input-buttom" type="password" id="form-senha" name="senha" placeholder="Insira sua senha" />
                     <i class="bi bi-eye toggle-password" id="btn-senha"></i>
                 </div>
             </div>
@@ -40,15 +43,13 @@
             <p id="mensagem-login"></p>
 
             <a href="./src/register.html" class="register-link">Cadastrar uma conta</a>
-
-
         </form>
-        <script type='module' src="./src/js/pages/Login/login.js"></script>
 
+        <script type="module" src="/src/js/pages/Login/login.js"></script>
     </main>
 
     <script type="module">
-        import { setupDynamicNavigation } from './src/js/utils/pageLoader.js';
+        import { setupDynamicNavigation } from '/src/js/utils/pageLoader.js';
 
         async function loadNavBar() {
             try {
@@ -59,7 +60,7 @@
                 setupDynamicNavigation();
 
                 const script = document.createElement('script');
-                script.src = './src/js/global/navBar/navBar.js';
+                script.src = '/src/js/global/navBar/navBar.js';
                 document.body.appendChild(script);
             } catch (err) {
                 console.error('Erro ao carregar a navbar:', err);
