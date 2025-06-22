@@ -49,18 +49,18 @@
     </main>
 
     <script type="module">
-        import { setupDynamicNavigation } from '/src/js/utils/pageLoader.js';
+        import { setupDynamicNavigation } from 'src/js/utils/pageLoader.js';
 
         async function loadNavBar() {
             try {
-                const response = await fetch('./src/components/navBar/navBar.html');
+                const response = await fetch('src/components/navBar/navBar.html');
                 const html = await response.text();
                 document.getElementById('nav-placeholder').innerHTML = html;
 
                 setupDynamicNavigation();
 
                 const script = document.createElement('script');
-                script.src = '/src/js/global/navBar/navBar.js';
+                script.src = 'src/js/global/navBar/navBar.js';
                 document.body.appendChild(script);
             } catch (err) {
                 console.error('Erro ao carregar a navbar:', err);
