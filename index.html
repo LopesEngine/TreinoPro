@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <link rel="stylesheet" href="css/global/reset.css" />
+ <link rel="stylesheet" href="css/global/index.css" />
+ <link rel="stylesheet" href="css/pages/index.css" />
+ <link rel="stylesheet" href="css/pages/professionalProfile/professionalProfile.css">
+ <link rel="stylesheet" href="css/pages/ImcMacro.css/imCeMacro.css" />
+ <link rel="preconnect" href="https://fonts.googleapis.com" />
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+ <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet" />
+ <title>Treino Pro</title>
+</head>
+
+<body>
+ <!-- Navbar será inserida aqui dinamicamente -->
+ <div id="nav-placeholder"></div>
+
+ <main id="main-content">
+  <section>
+   <p>Bem-vindo ao Treino Pro. Selecione uma opção no menu.</p>
+  </section>
+ </main>
+
+ <script type="module">
+  import {setupDynamicNavigation} from './js/utils/pageLoader.js';
+  import {carregarBotaoSair} from './js/global/logoutButton/logoutButton.js';
+
+  async function loadNavBar() {
+   try {
+    const response=await fetch('./components/navBar/navBar.html');
+    const html=await response.text();
+    document.getElementById('nav-placeholder').innerHTML=html;
+
+    setupDynamicNavigation();
+
+    const script=document.createElement('script');
+    script.src='./js/global/navBar/navBar.js';
+    document.body.appendChild(script);
+
+    // ✅ Carrega o botão sair
+    carregarBotaoSair();
+   } catch(err) {
+    console.error('Erro ao carregar a navbar:',err);
+   }
+  }
+
+  loadNavBar();
+ </script>
+
+
+ <script src="./js/pages/exerciseList/exerciseList.js"></script>
+ <script src="./js/pages/viewProfile/viewProfile.js" defer></script>
+
+</body>
+
+</html>
