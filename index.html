@@ -39,7 +39,7 @@
             <button type="submit" class="login-button">Login</button><br>
             <p id="mensagem-login"></p>
 
-            <a href="register.html" class="register-link">Cadastrar uma conta</a>
+            <a href="./src/register.html" class="register-link">Cadastrar uma conta</a>
 
 
         </form>
@@ -48,7 +48,7 @@
     </main>
 
     <script type="module">
-        import { setupDynamicNavigation } from './js/utils/pageLoader.js';
+        import { setupDynamicNavigation } from './src/js/utils/pageLoader.js';
 
         async function loadNavBar() {
             try {
@@ -59,7 +59,7 @@
                 setupDynamicNavigation();
 
                 const script = document.createElement('script');
-                script.src = './js/global/navBar/navBar.js';
+                script.src = './src/js/global/navBar/navBar.js';
                 document.body.appendChild(script);
             } catch (err) {
                 console.error('Erro ao carregar a navbar:', err);
