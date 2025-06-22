@@ -1,60 +1,73 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 
 <head>
- <meta charset="UTF-8" />
- <meta name="viewport" content="width=device-width, initial-scale=1.0" />
- <link rel="stylesheet" href="./src/css/global/reset.css" />
- <link rel="stylesheet" href="./src/css/global/index.css" />
- <link rel="stylesheet" href="./src/css/pages/index.css" />
- <link rel="stylesheet" href="./src/css/pages/professionalProfile/professionalProfile.css">
- <link rel="stylesheet" href="./src/css/pages/ImcMacro.css/imCeMacro.css" />
- <link rel="preconnect" href="https://fonts.googleapis.com" />
- <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
- <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet" />
- <title>Treino Pro</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login - Treino Pro</title>
+    <link rel="stylesheet" href="css/global/reset.css" />
+    <link rel="stylesheet" href="css/global/index.css" />
+    <link rel="stylesheet" href="css/pages/index.css" />
+    <link rel="stylesheet" href="css/pages/login/login.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 </head>
 
 <body>
- <!-- Navbar será inserida aqui dinamicamente -->
- <div id="nav-placeholder"></div>
+    <!-- Navbar será inserida aqui dinamicamente -->
+    <div id="nav-placeholder"></div>
 
- <main id="main-content">
-  <section>
-   <p>Bem-vindo ao Treino Pro. Selecione uma opção no menu.</p>
-  </section>
- </main>
+    <main id="main-content">
+        <form action="#" method="post" autocomplete="off" class="form-container" id="form-login">
+            <h1>Login</h1>
 
- <script type="module">
-  import {setupDynamicNavigation} from './js/utils/pageLoader.js';
-  import {carregarBotaoSair} from './js/global/logoutButton/logoutButton.js';
+            <div>
+                <label class="input-name" for="email">E-mail:</label>
+                <input class="input-buttom" type="email" id="form-email" name="email" placeholder="Insira seu E-mail" />
+            </div>
 
-  async function loadNavBar() {
-   try {
-    const response=await fetch('./components/navBar/navBar.html');
-    const html=await response.text();
-    document.getElementById('nav-placeholder').innerHTML=html;
+            <div>
+                <label class="input-name" for="senha">Senha:</label>
+                <div class="input-wrapper" id="confirma-senha">
+                    <input class="input-buttom" type="password" id="form-senha" name="senha"
+                        placeholder="Insira sua senha" />
+                    <i class="bi bi-eye toggle-password" id="btn-senha"></i>
+                </div>
+            </div>
 
-    setupDynamicNavigation();
+            <button type="submit" class="login-button">Login</button><br>
+            <p id="mensagem-login"></p>
 
-    const script=document.createElement('script');
-    script.src='./js/global/navBar/navBar.js';
-    document.body.appendChild(script);
-
-    // ✅ Carrega o botão sair
-    carregarBotaoSair();
-   } catch(err) {
-    console.error('Erro ao carregar a navbar:',err);
-   }
-  }
-
-  loadNavBar();
- </script>
+            <a href="register.html" class="register-link">Cadastrar uma conta</a>
 
 
- <script src="./js/pages/exerciseList/exerciseList.js"></script>
- <script src="./js/pages/viewProfile/viewProfile.js" defer></script>
+        </form>
+        <script type='module' src="js/pages/Login/login.js"></script>
 
+    </main>
+
+    <script type="module">
+        import { setupDynamicNavigation } from './js/utils/pageLoader.js';
+
+        async function loadNavBar() {
+            try {
+                const response = await fetch('./components/navBar/navBar.html');
+                const html = await response.text();
+                document.getElementById('nav-placeholder').innerHTML = html;
+
+                setupDynamicNavigation();
+
+                const script = document.createElement('script');
+                script.src = './js/global/navBar/navBar.js';
+                document.body.appendChild(script);
+            } catch (err) {
+                console.error('Erro ao carregar a navbar:', err);
+            }
+        }
+
+        loadNavBar();
+    </script>
 </body>
 
 </html>
