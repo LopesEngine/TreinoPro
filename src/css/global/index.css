@@ -1,0 +1,33 @@
+/* Importações */
+@import "./navBar/navBar.css";
+@import "./navBar/textNabBar.css";
+@import "./logoutButton/logoutButton.css";
+
+/* Variáveis globais */
+:root {
+ --cor-primaria: #003f63;
+ --fonte-principal: "Bebas Neue", sans-serif;
+ --azul-escuro: RGB(36, 36, 58);
+ --azul-claro: RGB(70, 70, 110);
+ --laranja: #FFB347;
+ --amarelo: RGB(255, 214, 102);
+}
+
+body {
+ background-color: var(--azul-claro);
+}
+
+/* Estilos globais */
+a {
+ text-decoration: none;
+}
+
+* {
+ box-sizing: border-box;
+ /* overflow-x: hidden; */
+
+}
+
+p {
+ color: white;
+}

@@ -1,0 +1,424 @@
+/* * {
+    padding: 0;
+    margin: 1px;
+    font-family: "Bebas Neue", sans-serif;
+    box-sizing: border-box;
+    color: #fff;
+} */
+
+/* body {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    background: #fff;
+    overflow: hidden;
+} */
+
+.container {
+  display: flex;
+  width: 100%;
+}
+
+.sidebar {
+  background-color: RGB(36, 36, 58);
+  width: 240px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  box-shadow: 4px 0 12px rgba(0, 0, 0, 0.7);
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 28px;
+  text-align: center;
+}
+
+.menu a {
+  display: block;
+  margin: 12px 0;
+  padding: 12px;
+  text-decoration: none;
+  border: 2px solid transparent;
+  border-radius: 30px;
+  transition: background-color 0.4s;
+  cursor: pointer;
+}
+
+.menu a:hover {
+  background-color: RGB(255, 214, 102);
+  color: #003f63;
+  transform: none;
+}
+
+.search-bar {
+  width: 100%;
+  padding: 12px;
+  border-radius: 30px;
+  border: 2px solid #ffb347;
+  margin-bottom: 40px;
+  font-size: 16px;
+  color: #003f63;
+}
+
+.boxes {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.row {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.box {
+  flex: 1;
+  min-width: 320px;
+  background-color: RGB(36, 36, 58);
+  border-radius: 15px;
+  padding: 25px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+  border: 1px solid #ffb347;
+}
+
+.box h2 {
+  font-size: 20px;
+  text-align: center;
+  margin-bottom: 25px;
+  color: #ffb347;
+}
+
+.box label {
+  display: block;
+  margin-bottom: 12px;
+  font-weight: 600;
+  color: #ffb347;
+}
+
+.box select,
+.box input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 30px;
+  border: 2px solid #ffb347;
+  margin-bottom: 20px;
+  font-size: 14px;
+  color: #003f63;
+}
+
+/* Estilo base para todos os botões principais */
+.btn-padrao {
+  min-width: 160px;
+  padding: 12px 20px;
+  background-color: #ffb347;
+  color: #003f63;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  transition: background-color 0.4s;
+  margin: 10px 0;
+  display: inline-block;
+  text-align: center;
+}
+
+.btn-padrao:hover {
+  background-color: RGB(255, 214, 102);
+}
+
+/* Botão Gerar Ficha */
+.btn-gerar-ficha {
+  min-width: 160px;
+  padding: 12px 20px;
+  background-color: #ffb347;
+  color: #003f63;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  transition: background-color 0.4s;
+  margin: 15px auto;
+  display: block;
+  text-align: center;
+}
+
+.btn-gerar-ficha:hover {
+  background-color: RGB(255, 214, 102);
+}
+
+/* Botão Salvar */
+.btn-salvar {
+  min-width: 160px;
+  padding: 12px 20px;
+  background-color: #ffb347;
+  color: #003f63;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  transition: background-color 0.4s;
+  margin: 10px 0;
+  display: inline-block;
+  text-align: center;
+}
+
+.btn-salvar:hover {
+  background-color: RGB(255, 214, 102);
+}
+
+/* Botões dentro dos containers */
+.botoes-exercicio button,
+.botoes-medicao button {
+  min-width: 160px;
+  padding: 12px 20px;
+  background-color: #ffb347;
+  color: #003f63;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  transition: background-color 0.4s;
+  margin: 10px 0;
+  display: inline-block;
+  text-align: center;
+}
+
+.botoes-exercicio button:hover,
+.botoes-medicao button:hover {
+  background-color: RGB(255, 214, 102);
+}
+
+.hidden {
+  display: none;
+}
+
+.ficha-treino {
+  background-color: RGB(36, 36, 58);
+  border-radius: 15px;
+  padding: 20px;
+  margin-top: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+  border: 1px solid #ffb347;
+}
+
+.ficha-treino table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 15px 0;
+}
+
+.ficha-treino th,
+.ficha-treino td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #FFB347;
+}
+
+.ficha-treino th {
+  background-color: #ffb347;
+  color: #003f63;
+}
+
+.ficha-treino tr:nth-child(even) {
+  background-color: rgba(255, 179, 71, 0.1);
+}
+
+.rotina-semanal {
+  font-weight: bold;
+  color: #003f63;
+  margin-top: 15px;
+  padding: 10px;
+  background-color: #ffb347;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.nivel-options {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.nivel-btn {
+  padding: 8px 15px;
+  background-color: #f0f0f0;
+  border: 2px solid #ffb347;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.4s;
+  color: #003f63;
+}
+
+.nivel-btn.selected {
+  background-color: #ffb347;
+  color: #003f63;
+}
+
+.ficha-treino {
+  color: white;
+}
+
+.registro-exercicio {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.registro-exercicio input {
+  padding: 10px;
+  border-radius: 10px;
+  border: 2px solid #ffb347;
+  font-size: 14px;
+  flex: 1;
+  min-width: 100px;
+  color: #003f63;
+}
+
+.btn-remover {
+  background-color: #e74c3c;
+  border: none;
+  color: white;
+  font-size: 14px;
+  border-radius: 25px;
+  padding: 6px 12px;
+  cursor: pointer;
+  transition: background-color 0.4s;
+  transform: translateY(-9px);
+}
+
+.btn-remover-historico {
+  background-color: #e74c3c;
+  border: none;
+  color: white;
+  font-size: 14px;
+  border-radius: 25px;
+  padding: 6px 12px;
+  cursor: pointer;
+  transition: background-color 0.4s;
+}
+
+.btn-remover:hover {
+  background-color: #c0392b;
+}
+
+.btn-remover-historico:hover {
+  background-color: #c0392b;
+}
+
+.botoes-exercicio {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.botoes-medicao {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.historico-container {
+  display: flex;
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.historico-box {
+  flex: 1;
+  min-width: 320px;
+  background-color: RGB(36, 36, 58);
+  border-radius: 15px;
+  padding: 25px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+  border: 1px solid #ffb347;
+}
+
+.historico-box h2 {
+  font-size: 20px;
+  text-align: center;
+  margin-bottom: 25px;
+  color: #ffb347;
+}
+
+.historico-list {
+  max-height: 200px;
+  overflow-y: auto;
+  border: 2px solid #ffb347;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.historico-item {
+  margin-bottom: 10px;
+  border-bottom: 1px solid #ffb347;
+  padding: 5px;
+  color: white;
+}
+
+.grid-medidas {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.medida-item {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.medida-item input {
+  flex: 1;
+  min-width: 140px;
+  padding: 10px;
+  border-radius: 10px;
+  border: 2px solid #ffb347;
+  font-size: 14px;
+  color: #003f63;
+}
+
+input:focus,
+select:focus {
+  border: 3px solid RGB(255, 214, 102);
+  outline: none;
+}
+
+.box select option {
+  color: #003f63;
+  /* Cor do texto das opções */
+  background-color: #fff;
+  /* Fundo branco */
+  padding: 8px;
+  /* Espaçamento interno */
+}
+
+.box select {
+  color: #003f63;
+  /* Cor do texto do select */
+  background-color: #fff;
+  /* Fundo branco */
+}
+
+.nivel-btn:hover {
+  background-color: #ffb347; /* amarelo */
+  color: #003f63; /* texto azul escuro para contraste */
+}
+
+#fichas-container {
+  color: white;
+}

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <link rel="stylesheet" href="css/global/reset.css" />
+ <link rel="stylesheet" href="css/global/index.css" />
+ <link rel="stylesheet" href="css/pages/index.css" />
+ <link rel="stylesheet" href="css/pages/professionalProfile/professionalProfile.css">
+ <link rel="preconnect" href="https://fonts.googleapis.com" />
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+ <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet" />
+ <title>Treino Pro</title>
+</head>
+
+<body>
+ <!-- Navbar será inserida aqui dinamicamente -->
+ <div id="nav-placeholder"></div>
+
+ <main id="main-content">
+  <div class="content-profile">
+   <header class="professional-profile__header">
+    <h1 class="professional-profile__title">Profissionais Cadastrados</h1>
+   <a href="/professionalCad.html"> <button class="professional-profile__button" >Criar Cadastro</button></a>
+   </header>
+
+   <section class="professional-profile__list">
+    <article class="professional-card">
+     <img class="professional-card__avatar" src="https://www.w3schools.com/howto/img_avatar.png"
+      alt="Avatar de Luiz Campos" />
+     <p class="professional-card__info"><strong>Nome:</strong> Luiz Campos</p>
+     <p class="professional-card__info"><strong>Data de Nascimento:</strong> 04/02/1987</p>
+     <p class="professional-card__info"><strong>Gênero:</strong> Masculino</p>
+     <p class="professional-card__info"><strong>Telefone:</strong> (31) 99999-9999</p>
+     <p class="professional-card__info"><strong>Email:</strong> luizcampos@pucminas.com</p>
+     <p class="professional-card__info"><strong>Especialidade:</strong> Nutrição</p>
+     <p class="professional-card__info"><strong>Cidade:</strong> Belo Horizonte</p>
+    </article>
+
+    <article class="professional-card">
+     <img class="professional-card__avatar" src="https://www.w3schools.com/howto/img_avatar.png"
+      alt="Avatar de Miguel Yan" />
+     <p class="professional-card__info"><strong>Nome:</strong> Miguel Yan</p>
+     <p class="professional-card__info"><strong>Data de Nascimento:</strong> 05/12/1999</p>
+     <p class="professional-card__info"><strong>Gênero:</strong> Masculino</p>
+     <p class="professional-card__info"><strong>Telefone:</strong> (31) 90099-9009</p>
+     <p class="professional-card__info"><strong>Email:</strong> miguelyan@pucminas.com</p>
+     <p class="professional-card__info"><strong>Especialidade:</strong> Medicina</p>
+     <p class="professional-card__info"><strong>Cidade:</strong> Betim</p>
+    </article>
+   </section>
+  </div>
+
+ </main>
+
+
+</body>
+
+<script type="module">
+ import {setupDynamicNavigation} from './js/utils/pageLoader.js';
+
+ async function loadNavBar() {
+  try {
+   const response=await fetch('./components/navBar/navBar.html');
+   const html=await response.text();
+   document.getElementById('nav-placeholder').innerHTML=html;
+
+   setupDynamicNavigation();
+
+   // Carrega o JS que contém toggleMenu e outros handlers da navbar
+   const script=document.createElement('script');
+   script.src='./js/global/navBar/navBar.js';
+   document.body.appendChild(script);
+  } catch(err) {
+   console.error('Erro ao carregar a navbar:',err);
+  }
+ }
+
+ loadNavBar();
+</script>
+
+
+<script src="./js/pages/exerciseList/exerciseList.js"></script>
+
+</html>

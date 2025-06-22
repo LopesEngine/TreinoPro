@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/global/reset.css" />
+    <link rel="stylesheet" href="css/global/index.css" />
+    <link rel="stylesheet" href="css/pages/index.css" />
+    <link rel="stylesheet" href="css/pages/imcMacro.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
+    <title>Treino Pro</title>
+  </head>
+  <body>
+    <div id="nav-placeholder"></div>
+
+    <main id="main-content">
+      <div class="tabelaimc">
+        
+        <div class="calculadorimc">
+          <div class="Titulomcs">Calculadora IMC</div>
+          <form class="inputs">
+            <label for="altura">Altura (m)</label>
+            <input
+              type="number"
+              step="0.01"
+              placeholder="Altura"
+              class="inputmc"
+              id="altura"
+            />
+            <label for="peso">Peso (kg)</label>
+            <input
+              type="number"
+              step="0.1"
+              placeholder="Peso"
+              class="inputmc"
+              id="peso"
+            />
+            <button type="button" onclick="imcResultado()">Calcular</button>
+          </form>
+          <div class="resultado">
+            <h2>SEU IMC:</h2>
+            <div class="imc-valor" id="imcvalor"></div>
+            <div id="classificacao"></div>
+          </div>
+        </div>
+
+        <div class="calcmacro">
+          <div class="Titulomcs">Calculadora Macronutrientes</div>
+          <form class="inputs">
+            <div class="radio">
+              <label for="sexo-m">Masculino</label>
+              <input id="sexo-m" type="radio" value="masculino" name="sexo" />
+              <label for="sexo-f">Feminino</label>
+              <input id="sexo-f" type="radio" value="feminino" name="sexo" />
+            </div>
+            <label for="idade">Idade</label>
+            <input
+              type="number"
+              placeholder="Idade"
+              class="inputmc"
+              id="idade"
+              min="1"
+              max="120"
+            />
+            <label for="altura1">Altura (cm)</label>
+            <input
+              type="number"
+              placeholder="Altura"
+              class="inputmc"
+              id="altura1"
+              step="0.1"
+            />
+            <label for="peso1">Peso (kg)</label>
+            <input
+              type="number"
+              placeholder="Peso"
+              class="inputmc"
+              id="peso1"
+              step="0.1"
+            />
+            <label for="atividade">Atividade</label>
+            <select id="atividade">
+              <option value="1.2">
+                Sedentário (pouco ou nenhum exercício)
+              </option>
+              <option value="1.375">Levemente ativo (1 a 3 dias/semana)</option>
+              <option value="1.55">
+                Moderadamente ativo (3 a 5 dias/semana)
+              </option>
+              <option value="1.725">Muito ativo (6 a 7 dias/semana)</option>
+              <option value="1.9">
+                Extremamente ativo (duas vezes ao dia)
+              </option>
+            </select>
+            <label for="objetivo">Objetivo</label>
+            <select id="objetivo">
+              <option value="ganhar">Ganhar Peso</option>
+              <option value="manter">Manter Peso</option>
+              <option value="perder">Perder Peso</option>
+            </select>
+            <button type="button" onclick="Macro()">Calcular</button>
+          </form>
+          <div class="resultadoMacro">
+            <h2>MACRONUTRIENTES:</h2>
+            <span id="macroNutrientesResult" class="Macron"></span>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    
+    <script type="module">
+      import { setupDynamicNavigation } from "./js/utils/pageLoader.js";
+      async function loadNavBar() {
+        try {
+          const response = await fetch("./components/navBar/navBar.html");
+          const html = await response.text();
+          document.getElementById("nav-placeholder").innerHTML = html;
+          setupDynamicNavigation();
+          const script = document.createElement("script");
+          script.src = "./js/global/navBar/navBar.js";
+          document.body.appendChild(script);
+        } catch (err) {
+          console.error("Erro ao carregar a navbar:", err);
+        }
+      }
+      loadNavBar();
+    </script>
+
+    <script src="./js/pages/exerciseList/exerciseList.js"></script>
+    <script src="./js/pages/imc/imc.js"></script>
+  </body>
+</html>

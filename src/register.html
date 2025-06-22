@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+    <link rel="stylesheet" href="css/pages/register/register.css">
+    <link rel="stylesheet" href="css/global/reset.css" />
+    <link rel="stylesheet" href="css/global/index.css" />
+    <link rel="stylesheet" href="css/pages/index.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+</head>
+
+<body>
+    <div id="nav-placeholder"></div>
+
+    <main id="main-content">
+        <div>
+            <a href="login.html">
+                <button href="#" class="login-button">Entrar</button>
+            </a>
+
+        </div>
+        <div class="form">
+            <form action="#" target="_self" class="form-container" id="form-register">
+                <h1>Cadastre-se</h1>
+                <div>
+                    <label for="form-name">Nome:<br></label>
+                    <input type="text" class="input-buttom fonte" id="form-name"  name="nome"
+                        placeholder="Insira seu nome" autocomplete="given-name">
+
+                </div>
+                <div>
+                    <label for="form-surname">Sobrenome:<br></label>
+                    <input type="text" class="input-buttom fonte" id="form-surname" name="sobrenome"
+                        placeholder="Insira seu sobrenome" autocomplete="family-name">
+                </div>
+                <div>
+                    <label for="form-email">E-mail:<br></label>
+                    <input type="email" class="input-buttom fonte" id="form-email" name="email"
+                        placeholder="Insira seu E-mail" autocomplete="email">
+                </div>
+                <div id="div-senha" style="margin-bottom: 10px;">
+                    <label for="form-senha">Senha:<br></label>
+                    <div class="input-wrapper">
+
+                        <input type="password" class="input-buttom fonte" id="form-senha"  name="senha"
+                            placeholder="Insira sua senha" autocomplete="new-password">
+                        <i class="bi bi-eye toggle-password" id="btn-senha-1"></i>
+
+                    </div>
+                </div>
+
+                <div id="div-senha">
+                    <label for="form-senha">Senha:<br></label>
+                    <div class="input-wrapper">
+
+                        <input type="password" class="input-buttom fonte" id="form-confirma-senha" name="confirma-senha" placeholder="Repita sua senha" autocomplete="new-password">
+                        <i class="bi bi-eye toggle-password" id="btn-senha-2"></i>
+
+                    </div>
+                    <div id="senhaCaption">
+                        <dd id="caption">
+                            A senha deve conter pelo menos:<br>
+                            *Uma letra maiúscula;<br>
+                            *Um número;<br>
+                            *Um caractere especial(!@#$%^&*(),.?":{}|&lt; &gt;).</dd>
+                    </div>
+                    <div class="g-recaptcha" data-sitekey="6LfzgVArAAAAAFTb3icdIkaHgz1G1KEeG8rgbu8B"></div>
+                    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+
+                    <div>
+                        <button type="submit" class="register-button">Cadastrar</button>
+                    </div>
+                    <p id="mensagem-register"></p>
+
+
+            </form>
+
+
+    </main>
+</body>
+
+
+<script type="module">
+    import { setupDynamicNavigation } from './js/utils/pageLoader.js';
+
+    async function loadNavBar() {
+        try {
+            const response = await fetch('./components/navBar/navBar.html');
+            const html = await response.text();
+            document.getElementById('nav-placeholder').innerHTML = html;
+
+            setupDynamicNavigation();
+
+            const script = document.createElement('script');
+            script.src = './js/global/navBar/navBar.js';
+            document.body.appendChild(script);
+        } catch (err) {
+            console.error('Erro ao carregar a navbar:', err);
+        }
+    }
+
+    loadNavBar();
+</script>
+<script type="module" src="js/pages/Register/Register.js"></script>
+
+</html>

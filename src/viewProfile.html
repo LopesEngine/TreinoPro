@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <!-- Reset CSS -->
+  <link rel="stylesheet" href="css/global/reset.css" />
+  <!-- Global Styles -->
+  <link rel="stylesheet" href="css/global/index.css" />
+  <!-- Page-specific Styles -->
+  <link rel="stylesheet" href="css/pages/index.css" />
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet" />
+
+  <title>TreinoPRO</title>
+</head>
+
+<body>
+  <header>
+    <div>
+      <a href="login.html">
+        <button class="login-button" type="button">Entrar</button>
+      </a>
+    </div>
+  </header>
+
+  <!-- Navbar será inserida aqui dinamicamente -->
+  <div id="nav-placeholder"></div>
+
+  <main id="main-content">
+    <div id="perfil" class="secao">
+      <div class="boxes">
+        <div class="row">
+          <section class="box">
+            <h2>Registro de Progresso</h2>
+            <label for="data-treino">Data do Treino</label>
+            <input type="date" id="data-treino" name="data-treino" />
+
+            <div id="exercicios-container">
+              <div class="registro-exercicio">
+                <input type="text" placeholder="Exercício" />
+                <input type="number" placeholder="Carga (kg)" min="0" />
+                <input type="number" placeholder="Séries" min="0" />
+                <input type="number" placeholder="Repetições" min="0" />
+                <button class="btn-remover" type="button" onclick="removerLinha(this)">
+                  <span style="font-size: 15px; font-weight: bold; color: white;">X</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="botoes-exercicio">
+              <button class="btn-salvar" type="button" onclick="adicionarExercicio()">Adicionar Exercício</button>
+              <button class="btn-salvar" type="button" onclick="salvarProgresso()">Salvar Progresso</button>
+            </div>
+          </section>
+
+          <section class="box">
+            <h2>Controle de Medidas</h2>
+            <label for="data-medida">Data da Medição</label>
+            <input type="date" id="data-medida" name="data-medida" />
+
+            <div id="medidas-container" class="grid-medidas">
+              <div class="medida-item">
+                <input type="text" placeholder="Parte do corpo" />
+                <input type="number" placeholder="Medida (cm)" min="0" />
+                <button class="btn-remover" type="button" onclick="removerLinha(this)">
+                  <span style="font-size: 15px; font-weight: bold; color: white;">X</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="botoes-medicao">
+              <button class="btn-salvar" type="button" onclick="adicionarMedida()">Adicionar Medida</button>
+              <button class="btn-salvar" type="button" onclick="salvarMedicao()">Salvar Medição</button>
+            </div>
+          </section>
+        </div>
+
+        <div class="historico-container">
+          <section class="historico-box">
+            <h2>Histórico de Progresso</h2>
+            <div id="historico-progresso" class="historico-list"></div>
+          </section>
+
+          <section class="historico-box">
+            <h2>Histórico de Medidas</h2>
+            <div id="historico-medidas" class="historico-list"></div>
+          </section>
+        </div>
+
+        <section class="box">
+          <h2>Minha Rotina de Treino</h2>
+          <label for="rotina-treino">Selecione o seu objetivo:</label>
+          <select id="rotina-treino" class="form-control" data-frequencia="">
+            <option value="" disabled selected>Escolha uma rotina</option>
+            <option value="emagrecimento">Emagrecimento</option>
+            <option value="hipertrofia">Hipertrofia</option>
+            <option value="resistencia">Resistência</option>
+          </select>
+
+          <label>Selecione a sua frequência de treino:</label>
+          <div class="nivel-options">
+            <button class="nivel-btn" data-nivel="3" type="button" onclick="selecionarNivel(3)">3x/semana</button>
+            <button class="nivel-btn" data-nivel="4" type="button" onclick="selecionarNivel(4)">4x+/semana</button>
+          </div>
+
+          <button id="btn-gerar-ficha" class="btn-gerar-ficha" type="button" onclick="gerarFichaTreino()">Gerar Ficha de Treino</button>
+          <div id="fichas-container"></div>
+        </section>
+      </div>
+    </div>
+    
+  </main>
+
+  <script type="module">
+    import { setupDynamicNavigation } from './js/utils/pageLoader.js';
+
+    async function loadNavBar() {
+      try {
+        const response = await fetch('./components/navBar/navBar.html');
+        const html = await response.text();
+        document.getElementById('nav-placeholder').innerHTML = html;
+
+        setupDynamicNavigation();
+
+        // Carrega o JS que contém toggleMenu e outros handlers da navbar
+        const script = document.createElement('script');
+        script.src = './js/global/navBar/navBar.js';
+        document.body.appendChild(script);
+      } catch (err) {
+        console.error('Erro ao carregar a navbar:', err);
+      }
+    }
+
+    loadNavBar();
+  </script>
+
+  <script src="./js/pages/viewProfile/viewProfile.js"></script>
+</body>
+
+</html>

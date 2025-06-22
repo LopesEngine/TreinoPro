@@ -1,0 +1,18 @@
+.botao-sair {
+ position: absolute;
+ top: 20px;
+ right: 20px;
+ background-color: var(--laranja);
+ color: var(--cor-primaria);
+ border: none;
+ padding: 10px 20px;
+ font-weight: bold;
+ border-radius: 12px;
+ cursor: pointer;
+ transition: background-color 0.3s ease;
+ z-index: 1000;
+}
+
+.botao-sair:hover {
+ background-color: #ff8c00;
+}

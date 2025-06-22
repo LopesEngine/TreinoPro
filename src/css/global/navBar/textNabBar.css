@@ -1,0 +1,11 @@
+.textNavBar {
+ color: white;
+ font-size: large;
+ border-color: aliceblue;
+ width: 75%;
+ height: 10%;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ margin: 5px 0;
+}

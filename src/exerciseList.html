@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <link rel="stylesheet" href="css/global/reset.css">
+ <link rel="stylesheet" href="css/global/index.css">
+ <link rel="stylesheet" href="css/pages/index.css">
+ <link rel="stylesheet" href="css/exercise-filters.css">
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+ <title>Treino Pro</title>
+</head>
+
+<body>
+
+ <div id="nav-placeholder"></div>
+
+ <main id="main-content">
+  <aside>
+   <h3>Equipamento</h3>
+   <div class="filters" id="equip-filters">
+    <label><input type="checkbox" value="dumbbells" checked> Dumbbells</label>
+    <label><input type="checkbox" value="maquina" checked> Máquina</label>
+    <label><input type="checkbox" value="peso-corporal" checked> Peso Corporal</label>
+    <label><input type="checkbox" value="kettlebells" checked> Kettlebells</label>
+    <label><input type="checkbox" value="elastico" checked> Elásticos</label>
+   </div>
+
+   <h3>Tipo de Treino</h3>
+   <div class="filters" id="tipo-filters">
+    <label><input type="checkbox" value="forca" checked> Força</label>
+    <label><input type="checkbox" value="hipertrofia" checked> Hipertrofia</label>
+    <label><input type="checkbox" value="resistencia" checked> Resistência</label>
+    <label><input type="checkbox" value="mobilidade" checked> Mobilidade</label>
+    <label><input type="checkbox" value="cardio" checked> Cardio</label>
+   </div>
+
+   <h3>Grupo Muscular</h3>
+   <div class="filters" id="musculo-filters">
+    <label><input type="checkbox" value="ombros" checked> Ombros</label>
+    <label><input type="checkbox" value="peitoral" checked> Peitoral</label>
+    <label><input type="checkbox" value="pernas" checked> Pernas</label>
+    <label><input type="checkbox" value="gluteos" checked> Glúteos</label>
+   </div>
+  </aside>
+
+  <section class="exercise-list" id="exercise-list">
+   <h2 style=" color: white;">Exercícios</h2>
+
+   <!-- Exemplo de um bloco de exercício -->
+   <div class="exercise-card dumbbells forca ombros">
+    <h4>Elevação Lateral</h4>
+    <p>Trabalha ombros. Tipo: Força. Equipamento: Halteres.</p>
+
+    <div class="exercise-details">
+     <p><strong>Dica:</strong> Mantenha os braços ligeiramente fletidos, levante até a altura dos ombros, e controle a
+      descida.</p>
+     <div class="video-container">
+      <iframe src="https://www.youtube.com/embed/YWlR4v0k_sE" frameborder="0" allowfullscreen></iframe>
+     </div>
+    </div>
+   </div>
+
+   <div class="exercise-card dumbbells hipertrofia peitoral">
+    <h4>Supino com Halteres</h4>
+    <p>Foca o peitoral. Tipo: Hipertrofia. Equipamento: Halteres.</p>
+
+    <div class="exercise-details">
+     <p><strong>Dica:</strong> Mantenha os pés firmes no chão e os halteres alinhados ao peito durante a execução.</p>
+     <div class="video-container">
+      <iframe src="https://www.youtube.com/embed/vcBig73ojpE" frameborder="0" allowfullscreen></iframe>
+     </div>
+    </div>
+   </div>
+
+   <div class="exercise-card dumbbells forca pernas gluteos">
+    <h4>Agachamento com Halteres</h4>
+    <p>Fortalece pernas e glúteos. Tipo: Força. Equipamento: Halteres.</p>
+
+    <div class="exercise-details">
+     <p><strong>Dica:</strong> Mantenha a coluna neutra, joelhos alinhados com os pés, e vá até onde conseguir manter a
+      postura.</p>
+     <div class="video-container">
+      <iframe src="https://www.youtube.com/embed/aclHkVaku9U" frameborder="0" allowfullscreen></iframe>
+     </div>
+    </div>
+   </div>
+
+   <div class="exercise-card peso-corporal mobilidade pernas">
+    <h4>Alongamento de Pernas</h4>
+    <p>Melhora flexibilidade. Tipo: Mobilidade. Equipamento: Peso Corporal.</p>
+
+    <div class="exercise-details">
+     <p><strong>Dica:</strong> Mantenha a posição por pelo menos 30 segundos sem balançar o corpo.</p>
+     <div class="video-container">
+      <iframe src="https://www.youtube.com/embed/G04Kdkd2n9M" frameborder="0" allowfullscreen></iframe>
+     </div>
+    </div>
+   </div>
+
+   <div class="exercise-card maquina cardio pernas">
+    <h4>Bicicleta Estática</h4>
+    <p>Atividade cardiovascular. Tipo: Cardio. Equipamento: Máquina.</p>
+
+    <div class="exercise-details">
+     <p><strong>Dica:</strong> Ajuste a altura do banco para que o joelho fique ligeiramente dobrado ao pedalar.</p>
+     <div class="video-container">
+      <iframe src="https://www.youtube.com/embed/bW92QpRWf9U" frameborder="0" allowfullscreen></iframe>
+     </div>
+    </div>
+   </div>
+
+  </section>
+ </main>
+
+ <script type="module">
+  import {setupDynamicNavigation} from './js/utils/pageLoader.js';
+
+  async function loadNavBar() {
+   try {
+    const response=await fetch('./components/navBar/navBar.html');
+    const html=await response.text();
+    document.getElementById('nav-placeholder').innerHTML=html;
+
+    setupDynamicNavigation();
+
+    // Carrega o JS que contém toggleMenu e outros handlers da navbar
+    const script=document.createElement('script');
+    script.src='./js/global/navBar/navBar.js';
+    document.body.appendChild(script);
+   } catch(err) {
+    console.error('Erro ao carregar a navbar:',err);
+   }
+  }
+
+  loadNavBar();
+ </script>
+ <script src="./js/pages/exerciseList/exerciseList.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,112 @@
+.form-container {
+    border: 2px RGB(191, 26, 17);
+    padding: 20px 20px;
+    width: 350px;
+    margin: 100px auto;
+    border-radius: 15px;
+    background: RGB(36, 36, 58);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+}
+
+form div {
+    margin-bottom: 15px;
+}
+
+h1 {
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+.register-button {
+    width: 140px;
+    height: 40px;
+    border-radius: 30px;
+    margin-bottom: 5px;
+    display: block;
+    margin: 0 auto;
+    border: RGB(70, 70, 110);
+
+    color: #fff;
+    background: #FFB347
+}
+
+.register-button:hover {
+    color: white;
+    background: RGB(255, 214, 102);
+    transition: 0.4s;
+    cursor: pointer;
+}
+
+.login-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 80px;
+    height: 45px;
+    border-radius: 10px;
+    bottom: calc(100vh-100px);
+    color: #fff;
+    background: #FFB347;
+    border: RGB(36, 36, 58);
+
+}
+
+.login-button:hover {
+    color: white;
+    background: RGB(255, 214, 102);
+    transition: 0.4s;
+    cursor: pointer;
+}
+
+input:focus {
+    border: 3px solid RGB(255, 214, 102);
+    outline: none
+}
+
+#registerCaption {
+    display: flex;
+    align-items: left;
+    padding-top: 10px;
+    color: #fff;
+
+
+}
+
+#caption {
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.6rem;
+}
+
+.input-wrapper {
+    position: relative;
+}
+
+.toggle-password {
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    cursor: pointer;
+
+}
+
+#senhaCaption {
+    margin-top: 4px;
+    padding: 0;
+}
+
+.input-wrapper {
+    margin-bottom: 0;
+    padding: 0;
+}
+
+.g-recaptcha {
+    transform: scale(80%);
+    transform-origin: 0 0;
+    text-align: center;
+}
+/*Altera a fonte dos campos para melhor legibilidade*/
+input.fonte{
+    font-family: Arial, Helvetica, sans-serif ;
+}
