@@ -52,7 +52,7 @@
 
     <!-- Script para carregar a navbar dinamicamente -->
     <script type="module">
-        import { setupDynamicNavigation } from './js/utils/pageLoader.js';
+        import { setupDynamicNavigation } from 'js/utils/pageLoader.js';
 
         async function loadNavBar() {
             try {
@@ -63,7 +63,7 @@
                 setupDynamicNavigation();
 
                 const script = document.createElement('script');
-                script.src = './js/global/navBar/navBar.js';
+                script.src = 'js/global/navBar/navBar.js';
                 document.body.appendChild(script);
             } catch (err) {
                 console.error('Erro ao carregar a navbar:', err);
